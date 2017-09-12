@@ -28,22 +28,10 @@ def create_django_project(cwd, project_name, env_name):
     #run djangocms-installer
     print "running django-cms installer..."
     project_path = "%s/%s/%s"  % (cwd, project_name, project_name)
-    os.system("djangocms -pw %s %s" % (project_path, project_name))
+    os.system("djangocms -w -p %s %s" % (project_path, project_name))
     
     #make manage.py executable
     os.system("chmod +x %s/manage.py" % project_path)
-    
-    #migrate database
-    print "migrating database..."
-    os.system("%s/manage.py migrate" % project_path)
-    
-    #launch project in web browser
-    url = "http://127.0.0.1:8000"
-    webbrowser.open(url, new=2)
-    
-    #start debug server
-    print "starting the debug server..."
-    os.system("%s/manage.py runserver" % project_path)
     
 try:
     cwd = os.getcwd()
