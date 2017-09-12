@@ -20,11 +20,6 @@ def create_django_project(cwd, project_name, env_name):
     execfile(activate_venv, dict(__file__=activate_venv))
     print "done"
     
-    #install mysql-python
-    print "installing mysql-python..."
-    os.system("pip install mysql-python")
-    print "done"
-    
     #install djangocms-installer
     print "installing djangocms-installer..."
     os.system("pip install djangocms-installer")
@@ -33,7 +28,7 @@ def create_django_project(cwd, project_name, env_name):
     #run djangocms-installer
     print "running django-cms installer..."
     project_path = "%s/%s/%s"  % (cwd, project_name, project_name)
-    os.system("djangocms -p %s %s" % (project_path, project_name))
+    os.system("djangocms -pw %s %s" % (project_path, project_name))
     
     #make manage.py executable
     os.system("chmod +x %s/manage.py" % project_path)
